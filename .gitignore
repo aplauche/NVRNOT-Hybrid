@@ -1,5 +1,6 @@
 .DS_Store
 node_modules
+build
 
 
 # Remove this entry when you begin development of a custom theme to begin tracking your included blocks
