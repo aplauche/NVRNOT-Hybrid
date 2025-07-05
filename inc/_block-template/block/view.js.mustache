@@ -1,0 +1,16 @@
+document.addEventListener('DOMContentLoaded', function(){
+  
+  function handleCustomBlock(block){
+    // Main block logic goes here...
+    // const example = block.querySelectorAll('.example')
+  }
+
+  const blockInstances = document.querySelectorAll('.block-{{slug}}')
+
+  if(!!blockInstances && blockInstances.length > 0){
+    blockInstances.forEach(block => {
+      handleCustomBlock(block)
+    })
+  }
+
+})

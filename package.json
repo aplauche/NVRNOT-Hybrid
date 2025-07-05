@@ -1,0 +1,30 @@
+{
+  "name": "nvrnot",
+  "version": "0.0.1",
+  "description": "A starter theme for designers and developers.",
+  "main": "index.js",
+  "scripts": {
+    "create:block": "cd ./blocks && npx @wordpress/create-block --namespace=nvrnot --category=custom --template ../inc/_block-template --no-plugin",
+    "start": "rm -rf build && wp-scripts start --config webpack.config.js --webpack-src-dir=blocks",
+    "build": "rm -rf build && wp-scripts build --config webpack.config.js --webpack-src-dir=blocks",
+    "reset": "rm -rf node_modules build package-lock.json",
+    "spinup": "wp-env start",
+    "destroy": "wp-env destroy",
+    "utils": "node _generate-utils.js"
+  },
+  "author": "aplauche",
+  "license": "GNU General Public License v3",
+  "devDependencies": {
+    "@wordpress/create-block": "^4.51.0",
+    "@wordpress/env": "^10.8.0",
+    "@wordpress/scripts": "^30.0.2",
+    "copy-webpack-plugin": "^12.0.2",
+    "glob": "^11.0.0",
+    "mini-css-extract-plugin": "^2.9.1",
+    "npm-run-all": "^4.1.5",
+    "webpack-remove-empty-scripts": "^1.0.4"
+  },
+  "dependencies": {
+    "alpinejs": "^3.14.8"
+  }
+}

@@ -1,0 +1,28 @@
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  margin-top: 0 !important;
+}
+
+body {
+  font-family: monospace;
+  background: #F3F1EB;
+}
+
+.wp-site-blocks {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-footer {
+  margin-top: auto;
+}
+
+
+@import "_wp-utils.scss";
