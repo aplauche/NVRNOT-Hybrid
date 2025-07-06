@@ -4,6 +4,8 @@ const theme = JSON.parse(fs.readFileSync("theme.json", "utf8"));
 
 const SPACING_VAR_PREFIX = "--wp--preset--spacing--";
 const COLOR_VAR_PREFIX = "--wp--preset--color--";
+const FONT_FAMILY_VAR_PREFIX = "--wp--preset--font-family--";
+const FONT_SIZE_VAR_PREFIX = "--wp--preset--font-size--";
 
 // Define static breakpoints
 const breakpoints = {
@@ -11,6 +13,23 @@ const breakpoints = {
   md: "768px",
   lg: "1024px"
 };
+
+// Define states for color modifiers
+const states = {
+  hover: "hover",
+  focus: "focus",
+  focvis: "focus-visible"
+}
+
+const displays = [
+  "none",
+  "grid",
+  "flex",
+  "inline-flex",
+  "block",
+  "inline-block",
+  "inline"
+]
 
 const getSpacingMap = () => {
   const spacings = theme.settings?.spacing?.spacingSizes || [];
@@ -21,6 +40,7 @@ const getColorMap = () => {
   const colors = theme.settings?.color?.palette || [];
   return colors.map(({ slug }) => `  ${slug}: var(${COLOR_VAR_PREFIX}${slug})`).join(",\n");
 };
+
 
 const spacingProps = [
   ["m", "margin"],
@@ -39,6 +59,24 @@ const spacingProps = [
   ["py", ["padding-top", "padding-bottom"]],
   ["gap", "gap"]
 ];
+
+const generateDisplay = () => {
+  const results = []
+
+  for(const display of displays){
+    results.push(`.d-${display} { display: ${display}; }`)
+  }
+
+  for(const [bpKey, bpVal] of Object.entries(breakpoints)){
+    results.push(`\n@media (min-width: ${bpVal}) {`)
+    for(const display of displays){
+      results.push(`.${bpKey}\\:d-${display} { display: ${display}; }`)
+    }
+    results.push(`}`)
+  }
+
+  return results.join('\n')
+}
 
 const generateSpacingUtilities = () => {
   let base = [];
@@ -78,19 +116,64 @@ const generateSpacingUtilities = () => {
 
 const generateColorUtilities = () => {
   const base = [];
-  const responsive = {};
+  const stateRules = {};
 
   for (const { slug } of theme.settings?.color?.palette || []) {
     base.push(`.text-${slug} { color: var(${COLOR_VAR_PREFIX}${slug}); }`);
     base.push(`.bg-${slug} { background-color: var(${COLOR_VAR_PREFIX}${slug}); }`);
 
-    for (const [bpKey, bpVal] of Object.entries(breakpoints)) {
-      const textClass = `.${bpKey}\\:text-${slug} { color: var(${COLOR_VAR_PREFIX}${slug}); }`;
-      const bgClass = `.${bpKey}\\:bg-${slug} { background-color: var(${COLOR_VAR_PREFIX}${slug}); }`;
+    for (const [state, stateCssRule] of Object.entries(states)) {
+      const textClass = `.${state}\\:text-${slug}:${stateCssRule} { color: var(${COLOR_VAR_PREFIX}${slug}); }`;
+      const bgClass = `.${state}\\:bg-${slug}:${stateCssRule} { background-color: var(${COLOR_VAR_PREFIX}${slug}); }`;
 
+      if (!stateRules[state]) stateRules[state] = [];
+      stateRules[state].push(textClass);
+      stateRules[state].push(bgClass);
+    }
+  }
+
+  const stateBlocks = Object.entries(stateRules)
+    .map(
+      ([state, rules]) =>
+        `\n${rules.join("\n")}\n`
+    )
+    .join("\n\n");
+
+  return [...base, "", stateBlocks].join("\n");
+};
+
+const generateBorderRadiusUtilities = () => {
+  let classNames = []
+  const settings = theme.settings?.custom?.borderRadius || [];
+
+  for (const [slug, _value] of Object.entries(settings)) {
+    classNames.push(`.rounded-${slug} { border-radius: var(--wp--custom--border-radius--${slug}); }`);
+  }
+
+  return classNames.join("\n")
+}
+
+const generateFontUtilities = () => {
+  const fonts = theme.settings?.typography?.fontFamilies || [];
+  const sizes = theme.settings?.typography?.fontSizes || [];
+
+  let base = [];
+  let responsive = {};
+
+  // Font family
+  for (const { slug } of fonts) {
+    base.push(`.font-${slug} { font-family: var(${FONT_FAMILY_VAR_PREFIX}${slug}); }`);
+  }
+
+  // Font size
+  for (const { slug } of sizes) {
+    base.push(`.text-${slug} { font-size: var(${FONT_SIZE_VAR_PREFIX}${slug}); }`);
+
+    for (const [bpKey] of Object.entries(breakpoints)) {
+      const className = `.${bpKey}\\:text-${slug}`;
+      const rule = `${className} { font-size: var(${FONT_SIZE_VAR_PREFIX}${slug}); }`;
       if (!responsive[bpKey]) responsive[bpKey] = [];
-      responsive[bpKey].push(textClass);
-      responsive[bpKey].push(bgClass);
+      responsive[bpKey].push(rule);
     }
   }
 
@@ -122,11 +205,20 @@ $color-map: (
 ${getColorMap()}
 );
 
-// === Spacing Utilities ===
-${generateSpacingUtilities()}
+// === Display Utilities ===
+${generateDisplay()}
 
 // === Color Utilities ===
 ${generateColorUtilities()}
+
+// === Typography Utilities ===
+${generateFontUtilities()}
+
+// === Border Radius Utilities ===
+${generateBorderRadiusUtilities()}
+
+// === Spacing Utilities ===
+${generateSpacingUtilities()}
 `;
 
 fs.writeFileSync("assets/scss/_wp-utils.scss", sassContent);

@@ -1,0 +1,36 @@
+// @import "sass:map";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+// === Breakpoints ===
+$breakpoints: (
+  sm: 480px,
+  md: 768px,
+  lg: 1024px
+);
+
+html {
+  margin-top: 0 !important;
+}
+
+body {
+  padding-top: 20px;
+
+  &.admin-bar {
+    padding-top: 52px;
+  }
+}
+
+.wp-site-blocks {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-footer {
+  margin-top: auto;
+}

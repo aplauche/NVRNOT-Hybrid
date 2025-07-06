@@ -46,6 +46,24 @@ wp.domReady( () => {
       ]
     },
     {
+      "block": "core/paragraph",
+      "styles": [
+        {
+          "name": "eyebrow",
+          "label": "Eyebrow",
+        },
+      ]
+    },
+    {
+      "block": "core/heading",
+      "styles": [
+        {
+          "name": "eyebrow",
+          "label": "Eyebrow",
+        },
+      ]
+    },
+    {
       "block": "core/list",
       "styles": [
         {

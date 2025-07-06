@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying the footer.
  *
@@ -12,15 +13,15 @@
 ?>
 
 
-			<footer class="wp-block-template-part site-footer is-layout-constrained has-global-padding">
-				<div class="">
-					&copy; <?php echo esc_html( gmdate( 'Y' ) ); ?>
-				</div>
-			</footer>
+<footer class="wp-block-template-part site-footer is-layout-constrained has-global-padding bg-contrast py-section text-white">
+	<div class="">
+		&copy; <?php echo esc_html(gmdate('Y')); ?>
+	</div>
+</footer>
 
-		
-		<?php wp_footer(); ?>
-	</div> <!-- end wp-site-blocks -->
+
+<?php wp_footer(); ?>
+</div> <!-- end wp-site-blocks -->
 
 
 </body>
