@@ -1,5 +1,12 @@
 .site-header {
 
+  --link-color: var(--wp--preset--color--contrast);
+  --link-color-bg: transparent;
+  --link-color--hover: var(--wp--preset--color--contrast);
+  --link-color-bg--hover: var(--wp--preset--color--base-200);
+  --link-padding: 0.35rem 1rem;
+  --menu-background: var(--wp--preset--color--white);
+
   position: sticky;
   width: 100%;
   top: 20px;
@@ -9,12 +16,6 @@
   .admin-bar & {
     top: 52px;
   }
-
-  --link-color: var(--wp--preset--color--dark);
-  --link-color-bg: transparent;
-  --link-color--hover: var(--wp--preset--color--dark);
-  --link-color-bg--hover: var(--wp--preset--color--base-200);
-  --link-padding: 0.35rem 1rem;
 
   nav {
     display: flex;
@@ -45,6 +46,10 @@
     cursor: pointer;
   }
 
+  .menu-toggle-container:has(input:focus-visible) {
+    outline: 2px solid var(--wp--preset--color--primary);
+  }
+
   // Navbar Styles
   .navbar {
     list-style-type: none;
@@ -71,11 +76,12 @@
       }
     }
 
-    // Dropdown Styles
+    // Dropdown Default Styles
     details {
       position: relative;
     }
 
+    // Remove base arrow
     details > summary {
       list-style: none;
     }
@@ -84,14 +90,16 @@
       display: none;
     }
 
+    // Dropdown toggle
     summary {
       padding: var(--link-padding);
       background: var(--wp--preset--color--base);
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 0.5rem;
       border-radius: var(--wp--custom--border-radius--md);
 
+      // Custom arrow
       &::after {
         content: "";
         transform-origin: 50%;
@@ -108,6 +116,7 @@
       }
     }
 
+    // Custom arrow
     details[open] {
       summary {
         &::after {
@@ -117,31 +126,34 @@
       }
     }
 
+    // Dropdown Menu
     ul.dropdown-menu {
       list-style-type: none;
       position: absolute;
       z-index: 99;
       padding: 0.25rem;
+      background: var(--menu-background);
       box-shadow: var(--wp--preset--shadow--elevation-200);
-      background: white;
       border-radius: var(--wp--custom--border-radius--md);
     }
   }
 
   // Mobile Styles
-  @media (max-width: 768px){
+  @media (width < map-get($breakpoints, lg)){
+    // Change navbar to menu reveal
     .navbar {
       display: none;
       position: absolute;
       top: calc(100% + 8px);
       left: 0;
-      background: white;
       width: 100%;
       flex-direction: column;
       padding: 1.5rem 1rem;
+      background: var(--menu-background);
       box-shadow: var(--wp--preset--shadow--elevation-200);
       border-radius: var(--wp--custom--border-radius--md);
 
+      // Change dropdown to relative on mobile
       ul.dropdown-menu {
         position: relative;
         top: unset;
@@ -150,6 +162,7 @@
       }
     }
 
+    // Reveal menu logic
     &:has(input#menu-toggle:checked) .navbar {
       display: flex;
     }

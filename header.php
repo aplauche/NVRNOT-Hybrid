@@ -42,16 +42,21 @@
 				<!-- Logo -->
 				<a class="header__logo" href="<?php echo home_url() ?>">NVRNOT</a>
 
-				<!-- Hidden checkbox controls menu visibility -->
-				<input type="checkbox" id="menu-toggle" class="d-none" />
+
+
 
 				<!-- Burger icon -->
-				<label for="menu-toggle" class="cursor-pointer md:d-none">
-					<svg style="width: 16px; height: 16px" fill="none" stroke="currentColor" stroke-width="2"
-						viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-						<path d="M4 6h16M4 12h16M4 18h16"></path>
-					</svg>
-				</label>
+				<div class="menu-toggle-container">
+					<label for="menu-toggle" class="cursor-pointer lg:d-none">
+						<svg style="width: 16px; height: 16px" fill="none" stroke="currentColor" stroke-width="2"
+							viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M4 6h16M4 12h16M4 18h16"></path>
+						</svg>
+					</label>
+
+					<!-- Hidden checkbox controls menu visibility -->
+					<input type="checkbox" id="menu-toggle" class="visually-hidden" aria-label="Open Menu" />
+				</div>
 
 				<!-- Navigation -->
 				<?php nvrnot\menuBuilderNoJs\render_menu("Main menu") ?>

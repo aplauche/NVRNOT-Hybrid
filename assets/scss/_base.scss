@@ -1,5 +1,3 @@
-// @import "sass:map";
-
 * {
   padding: 0;
   margin: 0;
@@ -18,13 +16,14 @@ html {
 }
 
 body {
-  padding-top: 20px;
+  padding-top: 20px; // sticky header offset
 
   &.admin-bar {
-    padding-top: 52px;
+    padding-top: 52px; // header offset + admin bar
   }
 }
 
+// Affix footer to bottom of page
 .wp-site-blocks {
   display: flex;
   flex-direction: column;
@@ -33,4 +32,17 @@ body {
 
 .site-footer {
   margin-top: auto;
+}
+
+// ---- Global Utilities --- 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
