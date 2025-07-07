@@ -152,10 +152,64 @@
 					"fontFace": [
 						{
 							"fontDisplay": "block",
+							"fontFamily": "Founders Grotesk",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "700",
+							"src": [
+								"file:./assets/fonts/founders/test-founders-grotesk-bold.woff2"
+							]
+						},
+						{
+							"fontDisplay": "block",
+							"fontFamily": "Founders Grotesk",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "400",
+							"src": [
+								"file:./assets/fonts/founders/test-founders-grotesk-regular.woff2"
+							]
+						}
+					],
+					"fontFamily": "Founders Grotesk, sans-serif",
+					"name": "Founders",
+					"slug": "display"
+				},
+				{
+					"fontFace": [
+						{
+							"fontDisplay": "block",
+							"fontFamily": "American Grotesk",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "700",
+							"src": [
+								"file:./assets/fonts/american/test-american-grotesk-bold.woff2"
+							]
+						},
+						{
+							"fontDisplay": "block",
+							"fontFamily": "American Grotesk",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "400",
+							"src": [
+								"file:./assets/fonts/american/test-american-grotesk-regular.woff2"
+							]
+						}
+					],
+					"fontFamily": "American Grotesk, sans-serif",
+					"name": "American",
+					"slug": "display-alt"
+				},
+				{
+					"fontFace": [
+						{
+							"fontDisplay": "block",
 							"fontFamily": "Outfit",
 							"fontStretch": "normal",
 							"fontStyle": "normal",
-							"fontWeight": "100 900",
+							"fontWeight": "400 700 900",
 							"src": [
 								"file:./assets/fonts/outfit/Outfit-Variable.woff2"
 							]
@@ -163,7 +217,7 @@
 					],
 					"fontFamily": "Outfit, sans-serif",
 					"name": "Outfit",
-					"slug": "outfit"
+					"slug": "body"
 				}
 			],
 			"fontSizes": [
@@ -205,20 +259,20 @@
 				},
 				{
 					"fluid": {
-						"max": "2.5rem",
-						"min": "2rem"
+						"max": "3rem",
+						"min": "2.5rem"
 					},
 					"name": "xxLarge",
-					"size": "2.5rem",
+					"size": "3rem",
 					"slug": "xxl"
 				},
 				{
 					"fluid": {
-						"max": "3rem",
-						"min": "2.5rem"
+						"max": "4.5rem",
+						"min": "3.5rem"
 					},
 					"name": "xxxLarge",
-					"size": "3rem",
+					"size": "4.5rem",
 					"slug": "xxxl"
 				}
 			]
@@ -690,6 +744,7 @@
 			},
 			"heading": {
 				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--display)",
 					"fontWeight": "var(--wp--custom--font-weight--regular)",
 					"lineHeight": "var(--wp--custom--line-height--xs)"
 				}
@@ -725,7 +780,7 @@
 			}
 		},
 		"typography": {
-			"fontFamily": "monospace",
+			"fontFamily": "var(--wp--preset--font-family--body)",
 			"fontSize": "var(--wp--preset--font-size--sm)",
 			"fontWeight": "var(--wp--custom--font-weight--light)",
 			"lineHeight": "var(--wp--custom--line-height--lg)"
