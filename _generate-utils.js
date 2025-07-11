@@ -1,18 +1,10 @@
 const fs = require("fs");
-
 const theme = JSON.parse(fs.readFileSync("theme.json", "utf8"));
 
 const SPACING_VAR_PREFIX = "--wp--preset--spacing--";
 const COLOR_VAR_PREFIX = "--wp--preset--color--";
 const FONT_FAMILY_VAR_PREFIX = "--wp--preset--font-family--";
 const FONT_SIZE_VAR_PREFIX = "--wp--preset--font-size--";
-
-// Define static breakpoints
-const breakpoints = {
-  sm: "480px",
-  md: "768px",
-  lg: "1024px"
-};
 
 // Define states for color modifiers
 const states = {
@@ -31,17 +23,6 @@ const displays = [
   "inline"
 ]
 
-const getSpacingMap = () => {
-  const spacings = theme.settings?.spacing?.spacingSizes || [];
-  return spacings.map(({ slug }) => `  ${slug}: var(${SPACING_VAR_PREFIX}${slug})`).join(",\n");
-};
-
-const getColorMap = () => {
-  const colors = theme.settings?.color?.palette || [];
-  return colors.map(({ slug }) => `  ${slug}: var(${COLOR_VAR_PREFIX}${slug})`).join(",\n");
-};
-
-
 const spacingProps = [
   ["m", "margin"],
   ["mt", "margin-top"],
@@ -59,6 +40,32 @@ const spacingProps = [
   ["py", ["padding-top", "padding-bottom"]],
   ["gap", "gap"]
 ];
+
+console.log();
+console.log("---------------------------------------");
+console.log("🏗️  Building CSS from theme.json file...");
+console.log("---------------------------------------");
+console.log();
+
+const breakpoints = theme.settings?.custom?.breakpoints || {}
+
+const getBreakPointMap = () => {
+  return Object.entries(breakpoints).map(([slug, val]) => `  ${slug}: ${val},`).join("\n")
+}
+
+const getBreakPointVars = () => {
+  return Object.entries(breakpoints).map(([slug, val]) => `$bp-${slug}: ${val};`).join("\n")
+}
+
+const getSpacingMap = () => {
+  const spacings = theme.settings?.spacing?.spacingSizes || [];
+  return spacings.map(({ slug }) => `  ${slug}: var(${SPACING_VAR_PREFIX}${slug})`).join(",\n");
+};
+
+const getColorMap = () => {
+  const colors = theme.settings?.color?.palette || [];
+  return colors.map(({ slug }) => `  ${slug}: var(${COLOR_VAR_PREFIX}${slug})`).join(",\n");
+};
 
 const generateDisplay = () => {
   const results = []
@@ -187,24 +194,27 @@ const generateFontUtilities = () => {
   return [...base, "", responsiveBlocks].join("\n");
 };
 
-const sassContent = `
-// === Breakpoints ===
+const sassVars = `
+// === Breakpoints Map ===
 $breakpoints: (
-  sm: 480px,
-  md: 768px,
-  lg: 1024px
+${getBreakPointMap()}
 );
 
+// === Breakpoints Quick Utils ===
+${getBreakPointVars()}
+
 // === Spacing Map ===
-$spacing-map: (
+$spacing: (
 ${getSpacingMap()}
 );
 
 // === Color Map ===
-$color-map: (
+$colors: (
 ${getColorMap()}
 );
+`
 
+const sassUtils = `
 // === Display Utilities ===
 ${generateDisplay()}
 
@@ -221,5 +231,12 @@ ${generateBorderRadiusUtilities()}
 ${generateSpacingUtilities()}
 `;
 
-fs.writeFileSync("assets/scss/_wp-utils.scss", sassContent);
-console.log("✅ Generated: _wp-utils.scss");
+fs.writeFileSync("assets/scss/_wp-vars.scss", sassVars);
+console.log("✅ Generated: assets/scss/_wp-vars.scss");
+fs.writeFileSync("assets/scss/_wp-utils.scss", sassUtils);
+console.log("✅ Generated: assets/scss/_wp-utils.scss");
+
+console.log()
+console.log("🚀 All done!")
+console.log()
+console.log("---------------------------------------");

@@ -21,12 +21,13 @@ function render_menu_item($menu_item, $children = [])
   $has_children = !empty($children);
   $active_class = $menu_item->current ? ' active ' : '';
   $rel = !empty($menu_item->xfn) ? ' rel="' . esc_attr($menu_item->xfn) . '"' : '';
+  $target = !empty($menu_item->target) ? ' target="' . esc_attr($menu_item->target) . '"' : '';
 
   echo '<li class="nav-item ' . $active_class . '">';
 
   if ($has_children) {
     echo "<details>";
-    echo "<summary>" . $menu_item->title . "</summary>";
+    echo '<summary class="nav-link">' . $menu_item->title . '</summary>';
     echo '<ul class="dropdown-menu">';
     // Recursive call to render child items.
     foreach ($children as $child) {
@@ -36,7 +37,7 @@ function render_menu_item($menu_item, $children = [])
     echo "</details>";
   } else {
     // Menu item without children.
-    echo '<a href="' . esc_url($menu_item->url) . '" class="nav-link' . $active_class . '"' . $rel . '>' . $menu_item->title . '</a>';
+    echo '<a href="' . esc_url($menu_item->url) . '" class="nav-link' . $active_class . '"' . $rel . $target . '>' . $menu_item->title . '</a>';
   }
 
   echo '</li>';
@@ -100,12 +101,19 @@ function build_menu_tree(array $menu_items, $parent_id = 0)
  * Custom function to render a WordPress menu with infinite levels of nesting
  * using markup.
  *
- * @param string $menu_name The menu slug or ID to retrieve.
+ * @param string $menu_location The location of the menu to display
  */
-function render_menu($menu_name, $id = false, $debug = false)
+function render_menu($menu_location, $id = false, $debug = false)
 {
-  // Get the menu object by name (slug or ID).
-  $menu = wp_get_nav_menu_object($menu_name);
+
+  // fetch all registered menu locations
+  $locs = get_nav_menu_locations();
+
+  // Fetch the ID of the menu at the location
+  $menu_id = $locs[$menu_location];
+
+  // Get the menu object by ID
+  $menu = wp_get_nav_menu_object($menu_id);
 
   if ($menu) {
     $menu_items = wp_get_nav_menu_items($menu->term_id);

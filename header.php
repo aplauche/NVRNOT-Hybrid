@@ -42,9 +42,6 @@
 				<!-- Logo -->
 				<a class="header__logo" href="<?php echo home_url() ?>">NVRNOT</a>
 
-
-
-
 				<!-- Burger icon -->
 				<div class="menu-toggle-container">
 					<label for="menu-toggle" class="cursor-pointer lg:d-none">
@@ -59,6 +56,6 @@
 				</div>
 
 				<!-- Navigation -->
-				<?php nvrnot\menuBuilderNoJs\render_menu("Main menu") ?>
+				<?php nvrnot\menuBuilderNoJs\render_menu("primary") ?>
 			</nav>
 		</header>

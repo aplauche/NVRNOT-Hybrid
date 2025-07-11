@@ -1,36 +1,4 @@
 
-// === Breakpoints ===
-$breakpoints: (
-  sm: 480px,
-  md: 768px,
-  lg: 1024px
-);
-
-// === Spacing Map ===
-$spacing-map: (
-  8: var(--wp--preset--spacing--8),
-  16: var(--wp--preset--spacing--16),
-  24: var(--wp--preset--spacing--24),
-  32: var(--wp--preset--spacing--32),
-  48: var(--wp--preset--spacing--48),
-  64: var(--wp--preset--spacing--64),
-  section: var(--wp--preset--spacing--section)
-);
-
-// === Color Map ===
-$color-map: (
-  primary: var(--wp--preset--color--primary),
-  secondary: var(--wp--preset--color--secondary),
-  base: var(--wp--preset--color--base),
-  base-100: var(--wp--preset--color--base-100),
-  base-200: var(--wp--preset--color--base-200),
-  base-300: var(--wp--preset--color--base-300),
-  contrast: var(--wp--preset--color--contrast),
-  contrast-alt: var(--wp--preset--color--contrast-alt),
-  white: var(--wp--preset--color--white),
-  black: var(--wp--preset--color--black)
-);
-
 // === Display Utilities ===
 .d-none { display: none; }
 .d-grid { display: grid; }
@@ -68,6 +36,16 @@ $color-map: (
 .lg\:d-block { display: block; }
 .lg\:d-inline-block { display: inline-block; }
 .lg\:d-inline { display: inline; }
+}
+
+@media (min-width: 1160px) {
+.xl\:d-none { display: none; }
+.xl\:d-grid { display: grid; }
+.xl\:d-flex { display: flex; }
+.xl\:d-inline-flex { display: inline-flex; }
+.xl\:d-block { display: block; }
+.xl\:d-inline-block { display: inline-block; }
+.xl\:d-inline { display: inline; }
 }
 
 // === Color Utilities ===
@@ -162,7 +140,9 @@ $color-map: (
 
 
 // === Typography Utilities ===
-.font-outfit { font-family: var(--wp--preset--font-family--outfit); }
+.font-display { font-family: var(--wp--preset--font-family--display); }
+.font-display-alt { font-family: var(--wp--preset--font-family--display-alt); }
+.font-body { font-family: var(--wp--preset--font-family--body); }
 .text-xs { font-size: var(--wp--preset--font-size--xs); }
 .text-sm { font-size: var(--wp--preset--font-size--sm); }
 .text-md { font-size: var(--wp--preset--font-size--md); }
@@ -199,6 +179,16 @@ $color-map: (
   .lg\:text-xl { font-size: var(--wp--preset--font-size--xl); }
   .lg\:text-xxl { font-size: var(--wp--preset--font-size--xxl); }
   .lg\:text-xxxl { font-size: var(--wp--preset--font-size--xxxl); }
+}
+
+@media (min-width: 1160px) {
+  .xl\:text-xs { font-size: var(--wp--preset--font-size--xs); }
+  .xl\:text-sm { font-size: var(--wp--preset--font-size--sm); }
+  .xl\:text-md { font-size: var(--wp--preset--font-size--md); }
+  .xl\:text-lg { font-size: var(--wp--preset--font-size--lg); }
+  .xl\:text-xl { font-size: var(--wp--preset--font-size--xl); }
+  .xl\:text-xxl { font-size: var(--wp--preset--font-size--xxl); }
+  .xl\:text-xxxl { font-size: var(--wp--preset--font-size--xxxl); }
 }
 
 // === Border Radius Utilities ===
@@ -637,4 +627,112 @@ $color-map: (
   .lg\:gap-48 { gap: var(--wp--preset--spacing--48); }
   .lg\:gap-64 { gap: var(--wp--preset--spacing--64); }
   .lg\:gap-section { gap: var(--wp--preset--spacing--section); }
+}
+
+@media (min-width: 1160px) {
+  .xl\:m-8 { margin: var(--wp--preset--spacing--8); }
+  .xl\:m-16 { margin: var(--wp--preset--spacing--16); }
+  .xl\:m-24 { margin: var(--wp--preset--spacing--24); }
+  .xl\:m-32 { margin: var(--wp--preset--spacing--32); }
+  .xl\:m-48 { margin: var(--wp--preset--spacing--48); }
+  .xl\:m-64 { margin: var(--wp--preset--spacing--64); }
+  .xl\:m-section { margin: var(--wp--preset--spacing--section); }
+  .xl\:mt-8 { margin-top: var(--wp--preset--spacing--8); }
+  .xl\:mt-16 { margin-top: var(--wp--preset--spacing--16); }
+  .xl\:mt-24 { margin-top: var(--wp--preset--spacing--24); }
+  .xl\:mt-32 { margin-top: var(--wp--preset--spacing--32); }
+  .xl\:mt-48 { margin-top: var(--wp--preset--spacing--48); }
+  .xl\:mt-64 { margin-top: var(--wp--preset--spacing--64); }
+  .xl\:mt-section { margin-top: var(--wp--preset--spacing--section); }
+  .xl\:mr-8 { margin-right: var(--wp--preset--spacing--8); }
+  .xl\:mr-16 { margin-right: var(--wp--preset--spacing--16); }
+  .xl\:mr-24 { margin-right: var(--wp--preset--spacing--24); }
+  .xl\:mr-32 { margin-right: var(--wp--preset--spacing--32); }
+  .xl\:mr-48 { margin-right: var(--wp--preset--spacing--48); }
+  .xl\:mr-64 { margin-right: var(--wp--preset--spacing--64); }
+  .xl\:mr-section { margin-right: var(--wp--preset--spacing--section); }
+  .xl\:mb-8 { margin-bottom: var(--wp--preset--spacing--8); }
+  .xl\:mb-16 { margin-bottom: var(--wp--preset--spacing--16); }
+  .xl\:mb-24 { margin-bottom: var(--wp--preset--spacing--24); }
+  .xl\:mb-32 { margin-bottom: var(--wp--preset--spacing--32); }
+  .xl\:mb-48 { margin-bottom: var(--wp--preset--spacing--48); }
+  .xl\:mb-64 { margin-bottom: var(--wp--preset--spacing--64); }
+  .xl\:mb-section { margin-bottom: var(--wp--preset--spacing--section); }
+  .xl\:ml-8 { margin-left: var(--wp--preset--spacing--8); }
+  .xl\:ml-16 { margin-left: var(--wp--preset--spacing--16); }
+  .xl\:ml-24 { margin-left: var(--wp--preset--spacing--24); }
+  .xl\:ml-32 { margin-left: var(--wp--preset--spacing--32); }
+  .xl\:ml-48 { margin-left: var(--wp--preset--spacing--48); }
+  .xl\:ml-64 { margin-left: var(--wp--preset--spacing--64); }
+  .xl\:ml-section { margin-left: var(--wp--preset--spacing--section); }
+  .xl\:mx-8 { margin-left: var(--wp--preset--spacing--8); margin-right: var(--wp--preset--spacing--8); }
+  .xl\:mx-16 { margin-left: var(--wp--preset--spacing--16); margin-right: var(--wp--preset--spacing--16); }
+  .xl\:mx-24 { margin-left: var(--wp--preset--spacing--24); margin-right: var(--wp--preset--spacing--24); }
+  .xl\:mx-32 { margin-left: var(--wp--preset--spacing--32); margin-right: var(--wp--preset--spacing--32); }
+  .xl\:mx-48 { margin-left: var(--wp--preset--spacing--48); margin-right: var(--wp--preset--spacing--48); }
+  .xl\:mx-64 { margin-left: var(--wp--preset--spacing--64); margin-right: var(--wp--preset--spacing--64); }
+  .xl\:mx-section { margin-left: var(--wp--preset--spacing--section); margin-right: var(--wp--preset--spacing--section); }
+  .xl\:my-8 { margin-top: var(--wp--preset--spacing--8); margin-bottom: var(--wp--preset--spacing--8); }
+  .xl\:my-16 { margin-top: var(--wp--preset--spacing--16); margin-bottom: var(--wp--preset--spacing--16); }
+  .xl\:my-24 { margin-top: var(--wp--preset--spacing--24); margin-bottom: var(--wp--preset--spacing--24); }
+  .xl\:my-32 { margin-top: var(--wp--preset--spacing--32); margin-bottom: var(--wp--preset--spacing--32); }
+  .xl\:my-48 { margin-top: var(--wp--preset--spacing--48); margin-bottom: var(--wp--preset--spacing--48); }
+  .xl\:my-64 { margin-top: var(--wp--preset--spacing--64); margin-bottom: var(--wp--preset--spacing--64); }
+  .xl\:my-section { margin-top: var(--wp--preset--spacing--section); margin-bottom: var(--wp--preset--spacing--section); }
+  .xl\:p-8 { padding: var(--wp--preset--spacing--8); }
+  .xl\:p-16 { padding: var(--wp--preset--spacing--16); }
+  .xl\:p-24 { padding: var(--wp--preset--spacing--24); }
+  .xl\:p-32 { padding: var(--wp--preset--spacing--32); }
+  .xl\:p-48 { padding: var(--wp--preset--spacing--48); }
+  .xl\:p-64 { padding: var(--wp--preset--spacing--64); }
+  .xl\:p-section { padding: var(--wp--preset--spacing--section); }
+  .xl\:pt-8 { padding-top: var(--wp--preset--spacing--8); }
+  .xl\:pt-16 { padding-top: var(--wp--preset--spacing--16); }
+  .xl\:pt-24 { padding-top: var(--wp--preset--spacing--24); }
+  .xl\:pt-32 { padding-top: var(--wp--preset--spacing--32); }
+  .xl\:pt-48 { padding-top: var(--wp--preset--spacing--48); }
+  .xl\:pt-64 { padding-top: var(--wp--preset--spacing--64); }
+  .xl\:pt-section { padding-top: var(--wp--preset--spacing--section); }
+  .xl\:pr-8 { padding-right: var(--wp--preset--spacing--8); }
+  .xl\:pr-16 { padding-right: var(--wp--preset--spacing--16); }
+  .xl\:pr-24 { padding-right: var(--wp--preset--spacing--24); }
+  .xl\:pr-32 { padding-right: var(--wp--preset--spacing--32); }
+  .xl\:pr-48 { padding-right: var(--wp--preset--spacing--48); }
+  .xl\:pr-64 { padding-right: var(--wp--preset--spacing--64); }
+  .xl\:pr-section { padding-right: var(--wp--preset--spacing--section); }
+  .xl\:pb-8 { padding-bottom: var(--wp--preset--spacing--8); }
+  .xl\:pb-16 { padding-bottom: var(--wp--preset--spacing--16); }
+  .xl\:pb-24 { padding-bottom: var(--wp--preset--spacing--24); }
+  .xl\:pb-32 { padding-bottom: var(--wp--preset--spacing--32); }
+  .xl\:pb-48 { padding-bottom: var(--wp--preset--spacing--48); }
+  .xl\:pb-64 { padding-bottom: var(--wp--preset--spacing--64); }
+  .xl\:pb-section { padding-bottom: var(--wp--preset--spacing--section); }
+  .xl\:pl-8 { padding-left: var(--wp--preset--spacing--8); }
+  .xl\:pl-16 { padding-left: var(--wp--preset--spacing--16); }
+  .xl\:pl-24 { padding-left: var(--wp--preset--spacing--24); }
+  .xl\:pl-32 { padding-left: var(--wp--preset--spacing--32); }
+  .xl\:pl-48 { padding-left: var(--wp--preset--spacing--48); }
+  .xl\:pl-64 { padding-left: var(--wp--preset--spacing--64); }
+  .xl\:pl-section { padding-left: var(--wp--preset--spacing--section); }
+  .xl\:px-8 { padding-left: var(--wp--preset--spacing--8); padding-right: var(--wp--preset--spacing--8); }
+  .xl\:px-16 { padding-left: var(--wp--preset--spacing--16); padding-right: var(--wp--preset--spacing--16); }
+  .xl\:px-24 { padding-left: var(--wp--preset--spacing--24); padding-right: var(--wp--preset--spacing--24); }
+  .xl\:px-32 { padding-left: var(--wp--preset--spacing--32); padding-right: var(--wp--preset--spacing--32); }
+  .xl\:px-48 { padding-left: var(--wp--preset--spacing--48); padding-right: var(--wp--preset--spacing--48); }
+  .xl\:px-64 { padding-left: var(--wp--preset--spacing--64); padding-right: var(--wp--preset--spacing--64); }
+  .xl\:px-section { padding-left: var(--wp--preset--spacing--section); padding-right: var(--wp--preset--spacing--section); }
+  .xl\:py-8 { padding-top: var(--wp--preset--spacing--8); padding-bottom: var(--wp--preset--spacing--8); }
+  .xl\:py-16 { padding-top: var(--wp--preset--spacing--16); padding-bottom: var(--wp--preset--spacing--16); }
+  .xl\:py-24 { padding-top: var(--wp--preset--spacing--24); padding-bottom: var(--wp--preset--spacing--24); }
+  .xl\:py-32 { padding-top: var(--wp--preset--spacing--32); padding-bottom: var(--wp--preset--spacing--32); }
+  .xl\:py-48 { padding-top: var(--wp--preset--spacing--48); padding-bottom: var(--wp--preset--spacing--48); }
+  .xl\:py-64 { padding-top: var(--wp--preset--spacing--64); padding-bottom: var(--wp--preset--spacing--64); }
+  .xl\:py-section { padding-top: var(--wp--preset--spacing--section); padding-bottom: var(--wp--preset--spacing--section); }
+  .xl\:gap-8 { gap: var(--wp--preset--spacing--8); }
+  .xl\:gap-16 { gap: var(--wp--preset--spacing--16); }
+  .xl\:gap-24 { gap: var(--wp--preset--spacing--24); }
+  .xl\:gap-32 { gap: var(--wp--preset--spacing--32); }
+  .xl\:gap-48 { gap: var(--wp--preset--spacing--48); }
+  .xl\:gap-64 { gap: var(--wp--preset--spacing--64); }
+  .xl\:gap-section { gap: var(--wp--preset--spacing--section); }
 }

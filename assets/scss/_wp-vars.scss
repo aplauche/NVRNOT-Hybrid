@@ -1,0 +1,39 @@
+
+// === Breakpoints Map ===
+$breakpoints: (
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1160px,
+);
+
+// === Breakpoints Quick Utils ===
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1160px;
+
+// === Spacing Map ===
+$spacing: (
+  8: var(--wp--preset--spacing--8),
+  16: var(--wp--preset--spacing--16),
+  24: var(--wp--preset--spacing--24),
+  32: var(--wp--preset--spacing--32),
+  48: var(--wp--preset--spacing--48),
+  64: var(--wp--preset--spacing--64),
+  section: var(--wp--preset--spacing--section)
+);
+
+// === Color Map ===
+$colors: (
+  primary: var(--wp--preset--color--primary),
+  secondary: var(--wp--preset--color--secondary),
+  base: var(--wp--preset--color--base),
+  base-100: var(--wp--preset--color--base-100),
+  base-200: var(--wp--preset--color--base-200),
+  base-300: var(--wp--preset--color--base-300),
+  contrast: var(--wp--preset--color--contrast),
+  contrast-alt: var(--wp--preset--color--contrast-alt),
+  white: var(--wp--preset--color--white),
+  black: var(--wp--preset--color--black)
+);

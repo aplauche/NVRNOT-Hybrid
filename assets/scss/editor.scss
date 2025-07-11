@@ -1,1 +1,8 @@
-@import "_wp-utils.scss";
+// Variables
+@import "wp-vars";
+
+// Base & Globals
+@import "base";
+
+// Utils go last
+@import "wp-utils";

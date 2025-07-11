@@ -86,6 +86,12 @@
 				"lg": "16px",
 				"xl": "32px",
 				"full": "999999999px"
+			},
+			"breakpoints": {
+				"sm": "480px",
+				"md": "768px",
+				"lg": "1024px",
+				"xl": "1160px"
 			}
 		},
 		"layout": {
